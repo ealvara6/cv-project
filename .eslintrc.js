@@ -17,6 +17,6 @@ module.exports = {
     'react',
   ],
   rules: {
-    'react/prefer-stateless-function': 'ignorePureComponents',
+    'react/prefer-stateless-function': 0,
   },
 };
