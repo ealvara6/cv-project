@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import '../styles/Cv.scss';
 import Header from './Header';
-import ContactInfo from './ContactInfo';
-import AboutMe from './AboutMe';
+import SideSection from './SideSection';
+import Work from './Work';
 
 class Cv extends Component {
   render() {
     return (
       <div id="cv">
         <Header />
-        <ContactInfo />
-        <AboutMe />
+        <SideSection />
+        <Work />
       </div>
     );
   }

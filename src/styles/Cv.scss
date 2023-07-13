@@ -1,33 +1,60 @@
+@use './colors';
+
 #cv {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(min-content, 25em) 1fr;
+  grid-template-rows: minmax(min-content, 13em) 1fr;
   height: 75vh;
-  width: 40em;
+  width: 70em;
   border: 1px black solid;
-  padding: 20px 0px 20px 20px;
+  // padding: 20px 15px 20px 20px;
   gap: 25px;
+  background-color: colors.$white;
 }
 
 #header {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .name {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
 }
 
+.title {
+  font-size: 20px;
+}
+
+.name, .title {
+  letter-spacing: 2px;
+}
+
+#side-section {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  background-color: colors.$blue;
+  color: colors.$white;
+}
+
+#side-section, #header {
+  padding: 20px;
+}
+
 #contact-info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 
   .info {
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    gap: 2px;
 
     .label {
       font-weight: bold;
@@ -37,6 +64,56 @@
 
 #about-me {
   display: grid;
-  grid-template-columns: minmax(min-content, 33em);
+  grid-template-columns: minmax(min-content, 42em);
   line-height: 1.4;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+  font-size: 25px;
+}
+
+.line {
+  border: 0.5px solid colors.$white;
+}
+
+#work-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.work {
+  display: grid;
+  grid-template-columns: minmax(min-content, 90px) 1fr;
+  grid-template-rows: repeat(3, min-content);
+  gap: 10px;
+
+  .dates {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+  .position {
+    grid-column: 2;
+    grid-row: 1;
+    font-weight: bold;
+  }
+  .company {
+    grid-column: 2;
+    grid-row: 2;
+    font-style: italic;
+  }
+  .duties {
+    grid-column: 2;
+    grid-row: 3;
+    list-style: circle;
+
+    li {
+      margin-top: 5px;
+    }
+  }
 }
