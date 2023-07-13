@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import Cv from './components/Cv';
+import './styles/App.scss';
 
 class App extends Component {
-  render() { 
-    return(
-      <div />
-    )
+  render() {
+    return (
+      <Cv />
+    );
   }
 }
 
