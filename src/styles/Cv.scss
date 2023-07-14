@@ -4,10 +4,9 @@
   display: grid;
   grid-template-columns: minmax(min-content, 25em) 1fr;
   grid-template-rows: minmax(min-content, 13em) 1fr;
-  height: 75vh;
+  height: 1056px;
   width: 70em;
-  border: 1px black solid;
-  // padding: 20px 15px 20px 20px;
+  border: 1px colors.$gray solid;
   gap: 25px;
   background-color: colors.$white;
 }
@@ -22,7 +21,10 @@
 
 .name {
   font-size: 50px;
-  font-weight: bold;
+  span {
+    color: colors.$blue;
+    font-weight: bold;
+  }
 }
 
 .title {
@@ -33,45 +35,10 @@
   letter-spacing: 2px;
 }
 
-#side-section {
-  display: flex;
-  flex-direction: column;
-  grid-column: 1;
-  grid-row: 1 / -1;
-  background-color: colors.$blue;
-  color: colors.$white;
-}
-
-#side-section, #header {
-  padding: 20px;
-}
-
-#contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-
-    .label {
-      font-weight: bold;
-    }
-  }
-}
-
-#about-me {
-  display: grid;
-  grid-template-columns: minmax(min-content, 42em);
-  line-height: 1.4;
-}
-
 .header {
   display: flex;
   flex-direction: column;
-  font-weight: 100;
+  font-weight: bold;
   font-size: 25px;
 }
 
@@ -85,13 +52,27 @@
   gap: 10px;
   grid-column: 2;
   grid-row: 2;
+  color: colors.$gray;
+  
+  .line {
+    border: 1px solid colors.$blue;
+  }
+  
+  .header {
+    color: colors.$blue;
+  }
+}
+
+#about-me {
+  line-height: 1.2;
 }
 
 .work {
   display: grid;
   grid-template-columns: minmax(min-content, 90px) 1fr;
   grid-template-rows: repeat(3, min-content);
-  gap: 10px;
+  row-gap: 5px;
+  column-gap: 5px;
 
   .dates {
     grid-column: 1;

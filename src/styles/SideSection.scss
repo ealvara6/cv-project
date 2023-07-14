@@ -1,0 +1,47 @@
+@use '_colors.scss';
+
+#side-section {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  background-color: colors.$blue;
+  color: colors.$white;
+  gap: 50px;
+}
+
+#side-section, #header {
+  padding: 20px;
+}
+
+#contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .label {
+      font-weight: bold;
+    }
+  }
+}
+
+#school-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#schools > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .degree {
+    font-weight: bold;
+  }
+}
