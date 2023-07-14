@@ -20,31 +20,27 @@ class Cv extends Component {
     };
 
     this.openHeaderForm = this.openHeaderForm.bind(this);
-    this.closeHeaderForm = this.closeHeaderForm.bind(this);
+    this.updateHeader = this.updateHeader.bind(this);
   }
 
   openHeaderForm() {
-    this.setState({
+    this.setState((prevState) => ({
       header: {
+        ...prevState.header,
         viewHeaderForm: true,
       },
-    });
-  }
-
-  closeHeaderForm() {
-    this.setState({
-      header: {
-        viewHeaderForm: false,
-      },
-    });
+    }));
   }
 
   updateHeader(firstName, lastName, title, aboutMe) {
     this.setState({
-      firstName,
-      lastName,
-      title,
-      aboutMe,
+      header: {
+        viewHeaderForm: false,
+        firstName: firstName === '' ? 'First Name' : firstName,
+        lastName: lastName === '' ? 'Last Name' : lastName,
+        title: title.trim() === '' ? 'Title' : title,
+        aboutMe: aboutMe.trim() === '' ? 'Write an about me section' : aboutMe,
+      },
     });
   }
 
@@ -53,7 +49,15 @@ class Cv extends Component {
     return (
       <div id="cv">
         {header.viewHeaderForm
-          ? <HeaderForm closeForm={this.closeHeaderForm} updateHeader={this.updateHeader} />
+          ? (
+            <HeaderForm
+              updateHeader={this.updateHeader}
+              firstName={header.firstName}
+              lastName={header.lastName}
+              title={header.title}
+              aboutMe={header.aboutMe}
+            />
+          )
           : (
             <Header
               openForm={this.openHeaderForm}

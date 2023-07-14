@@ -15,7 +15,7 @@ class Header extends Component {
         <div>
           <div className="name">
             <span>
-              {firstName}
+              {`${firstName} `}
             </span>
             {lastName}
           </div>
