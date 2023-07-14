@@ -142,8 +142,6 @@
     grid-column: 3;
     align-self: flex-end;
     justify-self: right;
-    width: 80px;
-    height: 35px;
   }
 }
 
@@ -151,9 +149,16 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  label {
+    color: colors.$blue;
+  }
 }
 
 label {
   font-size: 20px;
-  color: colors.$blue;
+}
+
+button {
+  width: 80px;
+  height: 35px;
 }

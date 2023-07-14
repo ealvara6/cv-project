@@ -10,6 +10,10 @@
   gap: 50px;
 }
 
+#side-section > div {
+  padding: 10px;
+}
+
 #side-section, #header {
   padding: 20px;
 }
@@ -28,6 +32,32 @@
       font-weight: bold;
     }
   }
+}
+
+#contact-info:hover {
+  background-color: rgba($color: colors.$gray, $alpha: 0.4);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  input {
+    height: 25px;
+  }
+
+  button {
+    align-self: flex-end;
+  }
+}
+
+#contact-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #school-info {
