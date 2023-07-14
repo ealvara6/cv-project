@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 
 class Header extends Component {
   render() {
+    const {
+      openForm,
+      firstName,
+      lastName,
+      title,
+      aboutMe,
+    } = { ...this.props };
+
     return (
-      <div id="header">
+      <div id="header" onClick={openForm} onKeyDown={openForm} role="link" tabIndex={0}>
         <div>
           <div className="name">
-            <span>Eduardo </span>
-            Alvarado
+            <span>
+              {firstName}
+            </span>
+            {lastName}
           </div>
-          <div className="title">Junior Web Developer</div>
+          <div className="title">{title}</div>
         </div>
-        <div id="about-me">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus magni odio nobis voluptatem nostrum eaque molestiae quis. Voluptatibus officia a molestiae est totam voluptate quis exercitationem facere, quo laudantium enim tenetur. Impedit facilis quas amet a delectus voluptates aliquam sint voluptatibus! Quaerat, beatae eaque delectus dignissimos cum quo voluptatibus? Unde.</div>
+        <div id="about-me">{aboutMe}</div>
       </div>
     );
   }
