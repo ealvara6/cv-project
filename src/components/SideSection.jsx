@@ -4,6 +4,7 @@ import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import SchoolInfo from './SchoolInfo';
 import SchoolForm from './SchoolForm';
+import SchoolForms from './SchoolForms';
 
 class SideSection extends Component {
   constructor(props) {
@@ -17,14 +18,17 @@ class SideSection extends Component {
         address: '703 fake ave',
       },
       schools: {
-        viewSchoolForm: true,
+        count: 0,
+        viewSchoolForm: false,
         schoolArr: [
           {
+            id: 0,
             dates: '2016 - 2021',
             degree: 'Management Information Systems',
             schoolName: 'University of Houston',
           },
           {
+            id: 1,
             dates: '2016 - 2021',
             degree: 'Management Information Systems',
             schoolName: 'University of Houston',
@@ -36,6 +40,7 @@ class SideSection extends Component {
     this.openContactForm = this.openContactForm.bind(this);
     this.updateContactForm = this.updateContactForm.bind(this);
     this.openSchoolForm = this.openSchoolForm.bind(this);
+    this.closeSchoolForm = this.closeSchoolForm.bind(this);
   }
 
   openContactForm() {
@@ -67,19 +72,18 @@ class SideSection extends Component {
     }));
   }
 
+  closeSchoolForm() {
+    this.setState((prevState) => ({
+      schools: {
+        ...prevState.schools,
+        viewSchoolForm: false,
+      },
+    }));
+  }
+
   render() {
     const { contact, schools } = { ...this.state };
-    const schoolForms = [];
-    schools.schoolArr.forEach((school) => {
-      schoolForms.push(
-        <SchoolForm
-          dates={school.dates}
-          degree={school.degree}
-          schoolName={school.schoolName}
-        />,
-      );
-    });
-    schoolForms.push(<button type="button">Save</button>);
+
     return (
       <div id="side-section">
         {contact.viewContactForm
@@ -101,7 +105,7 @@ class SideSection extends Component {
           )}
         {schools.viewSchoolForm
           ? (
-            schoolForms
+            <SchoolForms schools={schools.schoolArr} closeSchoolForm={this.closeSchoolForm} />
           )
           : (<SchoolInfo schools={schools.schoolArr} openSchoolForm={this.openSchoolForm} />
           )}

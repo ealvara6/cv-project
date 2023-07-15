@@ -1,4 +1,9 @@
 @use '_colors.scss';
+@mixin theme {
+  background-color: rgba($color: colors.$gray, $alpha: 0.4);
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 #side-section {
   display: flex;
@@ -35,9 +40,7 @@
 }
 
 #contact-info:hover {
-  background-color: rgba($color: colors.$gray, $alpha: 0.4);
-  border-radius: 10px;
-  cursor: pointer;
+  @include theme;
 }
 
 #contact-form {
@@ -62,7 +65,17 @@
   gap: 20px;
 }
 
-#schools > div {
+#school-info:hover {
+  @include theme;
+}
+
+#schools {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#schools > li > div {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -82,4 +95,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+#school-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .school-form-button {
+    align-self: flex-end;
+  }
 }

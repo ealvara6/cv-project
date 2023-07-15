@@ -7,11 +7,16 @@ class SchoolInfo extends Component {
     const schoolItems = [];
     schools.forEach((school) => {
       schoolItems.push(
-        <School
-          dates={school.dates}
-          degree={school.degree}
-          schoolName={school.schoolName}
-        />,
+        <>
+          <li key={school.id}>
+            <School
+              dates={school.dates}
+              degree={school.degree}
+              schoolName={school.schoolName}
+            />
+          </li>
+          <div className="line" />
+        </>,
       );
     });
     return (
@@ -20,9 +25,9 @@ class SchoolInfo extends Component {
           <div>Education</div>
           <div className="line" />
         </div>
-        <div id="schools">
+        <ul id="schools">
           {schoolItems}
-        </div>
+        </ul>
       </div>
     );
   }
