@@ -15,6 +15,16 @@ class SideSection extends Component {
         phone: '777-777-7777',
         address: '703 fake ave',
       },
+      schools: {
+        viewSchoolForm: false,
+        schoolArr: [
+          {
+            dates: '2016 - 2021',
+            degree: 'Management Information Systems',
+            schoolName: 'University of Houston',
+          },
+        ],
+      },
     });
 
     this.openContactForm = this.openContactForm.bind(this);
@@ -42,7 +52,7 @@ class SideSection extends Component {
   }
 
   render() {
-    const { contact } = { ...this.state };
+    const { contact, schools } = { ...this.state };
     return (
       <div id="side-section">
         {contact.viewContactForm
@@ -62,7 +72,12 @@ class SideSection extends Component {
               openContactForm={this.openContactForm}
             />
           )}
-        <SchoolInfo />
+        {schools.viewSchoolForm
+          ? (
+            null
+          )
+          : (<SchoolInfo schools={schools.schoolArr} />
+          )}
       </div>
     );
   }

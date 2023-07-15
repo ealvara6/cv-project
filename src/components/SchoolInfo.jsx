@@ -3,6 +3,17 @@ import School from './School';
 
 class SchoolInfo extends Component {
   render() {
+    const { schools } = { ...this.props };
+    const schoolItems = [];
+    schools.forEach((school) => {
+      schoolItems.push(
+        <School
+          dates={school.dates}
+          degree={school.degree}
+          schoolName={school.schoolName}
+        />,
+      );
+    });
     return (
       <div id="school-info">
         <div className="header">
@@ -10,7 +21,7 @@ class SchoolInfo extends Component {
           <div className="line" />
         </div>
         <div id="schools">
-          <School />
+          {schoolItems}
         </div>
       </div>
     );
