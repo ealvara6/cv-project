@@ -3,7 +3,7 @@ import School from './School';
 
 class SchoolInfo extends Component {
   render() {
-    const { schools } = { ...this.props };
+    const { schools, openSchoolForm } = { ...this.props };
     const schoolItems = [];
     schools.forEach((school) => {
       schoolItems.push(
@@ -15,7 +15,7 @@ class SchoolInfo extends Component {
       );
     });
     return (
-      <div id="school-info">
+      <div id="school-info" onClick={openSchoolForm} onKeyDown={openSchoolForm} role="button" tabIndex={0}>
         <div className="header">
           <div>Education</div>
           <div className="line" />

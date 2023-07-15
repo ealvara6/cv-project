@@ -3,6 +3,7 @@ import '../styles/SideSection.scss';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import SchoolInfo from './SchoolInfo';
+import SchoolForm from './SchoolForm';
 
 class SideSection extends Component {
   constructor(props) {
@@ -16,8 +17,13 @@ class SideSection extends Component {
         address: '703 fake ave',
       },
       schools: {
-        viewSchoolForm: false,
+        viewSchoolForm: true,
         schoolArr: [
+          {
+            dates: '2016 - 2021',
+            degree: 'Management Information Systems',
+            schoolName: 'University of Houston',
+          },
           {
             dates: '2016 - 2021',
             degree: 'Management Information Systems',
@@ -29,6 +35,7 @@ class SideSection extends Component {
 
     this.openContactForm = this.openContactForm.bind(this);
     this.updateContactForm = this.updateContactForm.bind(this);
+    this.openSchoolForm = this.openSchoolForm.bind(this);
   }
 
   openContactForm() {
@@ -51,8 +58,28 @@ class SideSection extends Component {
     });
   }
 
+  openSchoolForm() {
+    this.setState((prevState) => ({
+      schools: {
+        ...prevState.schools,
+        viewSchoolForm: true,
+      },
+    }));
+  }
+
   render() {
     const { contact, schools } = { ...this.state };
+    const schoolForms = [];
+    schools.schoolArr.forEach((school) => {
+      schoolForms.push(
+        <SchoolForm
+          dates={school.dates}
+          degree={school.degree}
+          schoolName={school.schoolName}
+        />,
+      );
+    });
+    schoolForms.push(<button type="button">Save</button>);
     return (
       <div id="side-section">
         {contact.viewContactForm
@@ -74,9 +101,9 @@ class SideSection extends Component {
           )}
         {schools.viewSchoolForm
           ? (
-            null
+            schoolForms
           )
-          : (<SchoolInfo schools={schools.schoolArr} />
+          : (<SchoolInfo schools={schools.schoolArr} openSchoolForm={this.openSchoolForm} />
           )}
       </div>
     );
