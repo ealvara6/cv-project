@@ -1,0 +1,16 @@
+#work-forms {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.work-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

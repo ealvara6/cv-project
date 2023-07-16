@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Cv.scss';
 import Header from './Header';
 import SideSection from './SideSection';
-import Work from './Work';
+import WorkSection from './WorkSection';
 import HeaderForm from './HeaderForm';
 
 class Cv extends Component {
@@ -68,7 +68,7 @@ class Cv extends Component {
             />
           )}
         <SideSection />
-        <Work />
+        <WorkSection />
       </div>
     );
   }

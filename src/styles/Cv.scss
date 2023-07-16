@@ -1,4 +1,9 @@
 @use './colors';
+@mixin theme {
+  cursor: pointer;
+  background-color: rgba($color: colors.$light-gray, $alpha: 0.5);
+  border-radius: 10px;
+}
 
 #cv {
   display: grid;
@@ -11,18 +16,20 @@
   background-color: colors.$white;
 }
 
+#side-section, #header, #work-section {
+  padding: 20px;
+}
+
 #header {
   display: flex;
   flex-direction: column;
   gap: 10px;
   grid-column: 2;
   grid-row: 1;
-  border-radius: 10px;
 }
 
 #header:hover {
-  cursor: pointer;
-  background-color: rgba($color: colors.$light-gray, $alpha: 0.5);
+  @include theme;
 }
 
 .name {
@@ -67,6 +74,10 @@
   .header {
     color: colors.$blue;
   }
+}
+
+#work-section:hover {
+  @include theme;
 }
 
 #about-me {
@@ -133,10 +144,6 @@
     grid-row: 3;
   }
 
-  textarea {
-    resize: none;
-  }
-
   button {
     grid-row: 3;
     grid-column: 3;
@@ -165,4 +172,8 @@ input {
 button {
   width: 80px;
   height: 35px;
+}
+
+textarea {
+  resize: none;
 }
