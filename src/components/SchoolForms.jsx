@@ -9,6 +9,7 @@ class SchoolForms extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   handleChange(id, e, input) {
@@ -50,6 +51,22 @@ class SchoolForms extends Component {
     });
   }
 
+  handleAdd() {
+    const { schools } = { ...this.state };
+    schools.push(
+      {
+        id: 2,
+        dates: '',
+        degree: '',
+        schoolName: '',
+      },
+    );
+
+    this.setState({
+      ...schools,
+    });
+  }
+
   render() {
     const { schools, closeSchoolForm } = { ...this.props };
     const schoolForms = [];
@@ -71,9 +88,14 @@ class SchoolForms extends Component {
       );
     });
     schoolForms.push(
-      <li key="school-form-button" className="school-form-button">
-        <button type="button" onClick={closeSchoolForm}>Save</button>
-      </li>,
+      <>
+        <li className="add-school">
+          <button type="button" onClick={this.handleAdd}>Add School</button>
+        </li>
+        <li key="school-form-button" className="school-form-button">
+          <button type="button" onClick={closeSchoolForm}>Save</button>
+        </li>
+      </>,
     );
     return (
       <ul id="school-forms">

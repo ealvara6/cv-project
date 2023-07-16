@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: minmax(min-content, 25em) 1fr;
   grid-template-rows: minmax(min-content, 13em) 1fr;
-  height: 1056px;
+  min-height: 1056px;
   width: 70em;
   border: 1px colors.$gray solid;
   gap: 25px;
