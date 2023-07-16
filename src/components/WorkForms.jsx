@@ -6,16 +6,22 @@ class WorkForms extends Component {
   constructor(props) {
     super(props);
 
-    this.state = ({ ...this.props });
+    const { work, counter } = { ...this.props };
+
+    this.state = {
+      counter,
+      work,
+    };
 
     this.handleChange = this.handleChange.bind(this);
+    this.addWork = this.addWork.bind(this);
   }
 
   handleChange(id, input, e) {
-    const state = { ...this.state };
-    const newWorkArr = state.work.map((work) => {
-      if (work.id === id) {
-        const tempWork = work;
+    const { work } = { ...this.state };
+    const newWorkArr = work.map((item) => {
+      if (item.id === id) {
+        const tempWork = item;
         switch (input) {
           case 'dates':
             tempWork.dates = e.target.value;
@@ -34,17 +40,35 @@ class WorkForms extends Component {
         }
         return tempWork;
       }
-      return work;
+      return item;
+    });
+
+    this.setState({
+      work: newWorkArr,
+    });
+  }
+
+  addWork() {
+    const { counter, work } = { ...this.state };
+    const newWorkArr = work;
+    newWorkArr.push({
+      id: counter,
+      dates: '',
+      position: '',
+      company: '',
+      tasks: '',
     });
 
     this.setState((prevState) => ({
-      closeWorkForm: prevState.closeWorkForm,
+      counter: prevState.counter + 1,
+      viewWorkForms: prevState.viewWorkForms,
       work: newWorkArr,
     }));
   }
 
   render() {
-    const { work, closeWorkForm } = { ...this.state };
+    const { work, counter } = { ...this.state };
+    const { updateWork } = { ...this.props };
     const workFormArr = [];
 
     work.forEach((item) => {
@@ -65,8 +89,8 @@ class WorkForms extends Component {
     return (
       <ul id="work-forms">
         {workFormArr}
-        <button type="button" className="add-work">Add Work</button>
-        <button type="button" className="save-button" onClick={closeWorkForm}>Save</button>
+        <button type="button" className="add-work" onClick={this.addWork}>Add Work</button>
+        <button type="button" className="save-button" onClick={() => updateWork(work, counter)}>Save</button>
       </ul>
     );
   }
