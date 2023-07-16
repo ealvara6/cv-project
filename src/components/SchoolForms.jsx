@@ -52,10 +52,10 @@ class SchoolForms extends Component {
   }
 
   handleAdd() {
-    const { schools } = { ...this.state };
+    const { schools, counter } = { ...this.state };
     schools.push(
       {
-        id: 2,
+        id: counter,
         dates: '',
         degree: '',
         schoolName: '',
@@ -63,11 +63,13 @@ class SchoolForms extends Component {
     );
 
     this.setState({
+      counter: counter + 1,
       ...schools,
     });
   }
 
   render() {
+    const { counter } = { ...this.state };
     const { schools, closeSchoolForm } = { ...this.props };
     const schoolForms = [];
     schools.forEach((school) => {
@@ -93,7 +95,7 @@ class SchoolForms extends Component {
           <button type="button" onClick={this.handleAdd}>Add School</button>
         </li>
         <li key="school-form-button" className="school-form-button">
-          <button type="button" onClick={closeSchoolForm}>Save</button>
+          <button type="button" onClick={() => closeSchoolForm(counter)}>Save</button>
         </li>
       </>,
     );

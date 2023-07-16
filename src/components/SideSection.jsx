@@ -3,7 +3,6 @@ import '../styles/SideSection.scss';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import SchoolInfo from './SchoolInfo';
-import SchoolForm from './SchoolForm';
 import SchoolForms from './SchoolForms';
 
 class SideSection extends Component {
@@ -18,17 +17,17 @@ class SideSection extends Component {
         address: '703 fake ave',
       },
       schools: {
-        count: 0,
+        counter: 3,
         viewSchoolForm: false,
         schoolArr: [
           {
-            id: 0,
+            id: 1,
             dates: '2016 - 2021',
             degree: 'Management Information Systems',
             schoolName: 'University of Houston',
           },
           {
-            id: 1,
+            id: 2,
             dates: '2016 - 2021',
             degree: 'Management Information Systems',
             schoolName: 'University of Houston',
@@ -72,10 +71,12 @@ class SideSection extends Component {
     }));
   }
 
-  closeSchoolForm() {
+  closeSchoolForm(counter) {
+    console.log(counter);
     this.setState((prevState) => ({
       schools: {
         ...prevState.schools,
+        counter,
         viewSchoolForm: false,
       },
     }));
@@ -105,7 +106,11 @@ class SideSection extends Component {
           )}
         {schools.viewSchoolForm
           ? (
-            <SchoolForms schools={schools.schoolArr} closeSchoolForm={this.closeSchoolForm} />
+            <SchoolForms
+              schools={schools.schoolArr}
+              closeSchoolForm={this.closeSchoolForm}
+              counter={schools.counter}
+            />
           )
           : (<SchoolInfo schools={schools.schoolArr} openSchoolForm={this.openSchoolForm} />
           )}
