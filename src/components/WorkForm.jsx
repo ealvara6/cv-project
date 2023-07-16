@@ -9,6 +9,7 @@ class WorkForm extends Component {
       company,
       tasks,
       handleChange,
+      deleteWork,
     } = { ...this.props };
     return (
       <form action="" className="work-form">
@@ -28,6 +29,7 @@ class WorkForm extends Component {
           <label htmlFor="tasks">Tasks</label>
           <textarea name="tasks" id="tasks" cols="30" rows="10" value={tasks} onChange={(e) => handleChange(id, 'tasks', e)} />
         </div>
+        <button type="button" className="delete-button" onClick={() => deleteWork(id)}>Delete</button>
       </form>
     );
   }

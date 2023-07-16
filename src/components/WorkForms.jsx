@@ -15,6 +15,7 @@ class WorkForms extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.addWork = this.addWork.bind(this);
+    this.deleteWork = this.deleteWork.bind(this);
   }
 
   handleChange(id, input, e) {
@@ -66,6 +67,16 @@ class WorkForms extends Component {
     }));
   }
 
+  deleteWork(id) {
+    const { work } = { ...this.state };
+    const workIndex = work.findIndex((item) => item.id === id);
+    work.splice(workIndex, 1);
+
+    this.setState({
+      work,
+    });
+  }
+
   render() {
     const { work, counter } = { ...this.state };
     const { updateWork } = { ...this.props };
@@ -81,6 +92,7 @@ class WorkForms extends Component {
             company={item.company}
             tasks={item.tasks}
             handleChange={this.handleChange}
+            deleteWork={this.deleteWork}
           />
         </li>,
       );
