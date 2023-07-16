@@ -12,10 +12,10 @@ class WorkSection extends Component {
       work: [
         {
           id: 0,
-          dates: '2019-2023',
-          position: 'Junior Web Developer',
-          company: 'Amazon',
-          tasks: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. A cupiditate, incidunt quidem quam nesciunt tempore impedit minima inventore labore, expedita at quae officia quos unde error eaque ullam vel omnis eum atque nulla non! Accusantium, nulla! Recusandae nobis tempore accusantium beatae, quae assumenda minima deleniti numquam in. Inventore, asperiores nam!',
+          dates: 'Dates',
+          position: 'Add your position here',
+          company: 'Add your company name here',
+          tasks: 'Add your tasks here',
         },
       ],
     });

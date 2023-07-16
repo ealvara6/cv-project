@@ -12,25 +12,19 @@ class SideSection extends Component {
     this.state = ({
       contact: {
         viewContactForm: false,
-        email: 'ealvara73@gmail.com',
-        phone: '777-777-7777',
-        address: '703 fake ave',
+        email: 'Add your email address here',
+        phone: 'Add your phone number here',
+        address: 'Add your home address here',
       },
       schools: {
-        counter: 3,
+        counter: 2,
         viewSchoolForm: false,
         schoolArr: [
           {
             id: 1,
-            dates: '2016 - 2021',
-            degree: 'Management Information Systems',
-            schoolName: 'University of Houston',
-          },
-          {
-            id: 2,
-            dates: '2016 - 2021',
-            degree: 'Management Information Systems',
-            schoolName: 'University of Houston',
+            dates: 'Dates',
+            degree: 'Degree',
+            schoolName: 'School',
           },
         ],
       },
@@ -72,7 +66,6 @@ class SideSection extends Component {
   }
 
   closeSchoolForm(counter) {
-    console.log(counter);
     this.setState((prevState) => ({
       schools: {
         ...prevState.schools,

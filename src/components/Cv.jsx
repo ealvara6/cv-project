@@ -12,10 +12,10 @@ class Cv extends Component {
     this.state = {
       header: {
         viewHeaderForm: false,
-        firstName: 'Eduardo',
-        lastName: 'Alvarado',
-        title: 'Junior Web Developer',
-        aboutMe: 'this is a test about me section.',
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        title: 'Title',
+        aboutMe: 'Write your about me section here.',
       },
     };
 
