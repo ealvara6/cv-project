@@ -13,6 +13,10 @@
   background-color: colors.$blue;
   color: colors.$white;
   gap: 50px;
+
+  button {
+    background-color: colors.$gray;
+  }
 }
 
 #side-section > div {
