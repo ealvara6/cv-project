@@ -8,6 +8,7 @@ class SchoolForms extends Component {
     this.state = ({ ...this.props });
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(id, e, input) {
@@ -39,6 +40,16 @@ class SchoolForms extends Component {
     });
   }
 
+  handleDelete(id) {
+    const { schools } = { ...this.state };
+    const schoolIndex = schools.findIndex((item) => item.id === id);
+    const newSchoolArr = schools.splice(schoolIndex, 1);
+
+    this.setState({
+      ...newSchoolArr,
+    });
+  }
+
   render() {
     const { schools, closeSchoolForm } = { ...this.props };
     const schoolForms = [];
@@ -52,6 +63,7 @@ class SchoolForms extends Component {
               degree={school.degree}
               schoolName={school.schoolName}
               handleChange={this.handleChange}
+              handleDelete={this.handleDelete}
             />
           </li>
           <div className="line" />
