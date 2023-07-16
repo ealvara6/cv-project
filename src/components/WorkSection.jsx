@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WorkForms from './WorkForms';
 import Work from './Work';
+import DisplayWork from './DisplayWork';
 
 class WorkSection extends Component {
   constructor(props) {
@@ -16,10 +17,18 @@ class WorkSection extends Component {
           company: 'Amazon',
           tasks: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. A cupiditate, incidunt quidem quam nesciunt tempore impedit minima inventore labore, expedita at quae officia quos unde error eaque ullam vel omnis eum atque nulla non! Accusantium, nulla! Recusandae nobis tempore accusantium beatae, quae assumenda minima deleniti numquam in. Inventore, asperiores nam!',
         },
+        {
+          id: 1,
+          dates: '2019-2023',
+          position: 'Junior Web Developer',
+          company: 'Amazon',
+          tasks: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. A cupiditate, incidunt quidem quam nesciunt tempore impedit minima inventore labore, expedita at quae officia quos unde error eaque ullam vel omnis eum atque nulla non! Accusantium, nulla! Recusandae nobis tempore accusantium beatae, quae assumenda minima deleniti numquam in. Inventore, asperiores nam!',
+        },
       ],
     });
 
     this.openWorkForm = this.openWorkForm.bind(this);
+    this.closeWorkForm = this.closeWorkForm.bind(this);
   }
 
   openWorkForm() {
@@ -28,26 +37,18 @@ class WorkSection extends Component {
     });
   }
 
+  closeWorkForm() {
+    this.setState({
+      viewWorkForms: false,
+    });
+  }
+
   render() {
     const { viewWorkForms, work } = { ...this.state };
-    const workArr = [];
-
-    work.forEach((item) => {
-      workArr.push(
-        <li key={item.id}>
-          <Work
-            dates={item.dates}
-            position={item.position}
-            company={item.company}
-            tasks={item.tasks}
-            openWorkForm={this.openWorkForm}
-          />
-        </li>,
-      );
-    });
-
     return (
-      viewWorkForms ? <WorkForms work={work} /> : <ul>{workArr}</ul>
+      viewWorkForms
+        ? <WorkForms work={work} closeWorkForm={this.closeWorkForm} />
+        : <DisplayWork work={work} openWorkForm={this.openWorkForm} />
     );
   }
 }
