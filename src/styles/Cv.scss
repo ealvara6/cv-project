@@ -10,10 +10,16 @@
   grid-template-columns: minmax(min-content, 25em) 1fr;
   grid-template-rows: minmax(min-content, 13em) 1fr;
   min-height: 1056px;
-  width: 70em;
+  max-width: 70em;
+  width: 100%;
   border: 1px colors.$gray solid;
   gap: 25px;
   background-color: colors.$white;
+
+  @media screen and (max-width: 650px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 #side-section, #header, #work-section, #work-forms {
@@ -129,6 +135,11 @@
   column-gap: 60px;
   row-gap: 15px;
   padding-right: 10px;
+
+  @media screen and (max-width: 650px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   .first-name-form {
     grid-column: 1;
